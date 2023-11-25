@@ -1,70 +1,63 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({
-    super.key,
-  });
+  const StartScreen(this.startQuiz, {super.key});
 
-  void moveToQuizScreen() {}
+  final void Function()? startQuiz;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.black,
-            Colors.pink,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Opacity(
-              opacity: 0.9,
-              child: const Image(
-                image: AssetImage('assets/images/img.png'),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // image
+          const Image(
+            image: AssetImage('assets/images/img.png'),
+            color: Color.fromARGB(255, 247, 247, 247),
+          ),
+          //make some Space
+          const SizedBox(
+            height: 30.0,
+          ),
+          // text
+          const Text(
+            'Learn FLutter in Funny way',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+              color: Colors.white,
+            ),
+          ),
+
+          const SizedBox(
+            height: 30.0,
+          ),
+          //Icon(Icons.add),
+          OutlinedButton.icon(
+            icon: const Icon(
+              Icons.arrow_right_alt,
+              color: Colors.white,
+            ),
+            onPressed: startQuiz,
+            style: OutlinedButton.styleFrom(
+              backgroundColor: Colors.black,
+              side: const BorderSide(
+                color: Colors.white,
+                width: 3.0,
               ),
             ),
-            // const Image(
-            //   image: AssetImage('assets/images/img.png'),
-            //   color: Colors.green,
-            // ),
-            const SizedBox(height: 30),
-            const Text('Learn Flutter in Funny Way!'),
-            const SizedBox(height: 30),
-            OutlinedButton.icon(
-              onPressed: moveToQuizScreen,
-              icon: const Icon(Icons.arrow_right),
-              label: const Text('Start Quiz'),
+            label: const Text(
+              'Start Quiz',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+                color: Colors.white,
+              ),
             ),
-            // OutlinedButton(
-            //   style: OutlinedButton.styleFrom(
-            //     // shape: const StadiumBorder(),
-            //     side: const BorderSide(width: 2, color: Colors.black),
-            //     foregroundColor: Colors.black,
-            //   ),
-            //   onPressed: () {},
-            //   child: const Row(
-            //     mainAxisSize: MainAxisSize.min,
-            //     children: [
-            //       Text(
-            //         'Start Quiz',
-            //         style: TextStyle(color: Colors.cyan, fontSize: 22),
-            //       ),
-            //       Icon(
-            //         Icons.arrow_right,
-            //         size: 40,
-            //       ),
-            //     ],
-            //   ),
-            // ),
-          ],
-        ),
+          )
+          // btn
+        ],
       ),
     );
   }
